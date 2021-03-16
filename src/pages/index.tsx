@@ -1,22 +1,13 @@
 /** @format */
 
+import { DisplayCode } from '../components';
+import schemaContainer from '../libs/schemaContainer';
+import { validator } from '../data/validator';
+
 const MainPage = () => {
 	return (
 		<main>
-			<pre>
-				<code>
-					{`const schema = yup.object().shape({
-                              name: yup.string()
-                              .required(),
-                              age: yup.string()
-                              .required(),
-                              phone: yup.string()
-                              .required(),
-                              sex: yup.string()
-                              .required(),
-})`}
-				</code>
-			</pre>
+			<DisplayCode code={schemaContainer(validator, 'yup')} />
 		</main>
 	);
 };

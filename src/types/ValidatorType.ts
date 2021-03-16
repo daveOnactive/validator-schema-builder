@@ -1,0 +1,1 @@
+export type ValidatorType = 'yup' | 'joi';
