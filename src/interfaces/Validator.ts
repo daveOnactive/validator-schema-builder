@@ -1,6 +1,9 @@
+import { SchemaValidators } from "../types";
+
 export interface validatorArr {
-    type: string,
-    message: string
+  type: SchemaValidators,
+  message: string,
+  value?: number
 }
 
 export interface Validator {

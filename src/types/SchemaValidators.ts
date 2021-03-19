@@ -1,0 +1,1 @@
+export type SchemaValidators = 'string' | 'required' | 'email' | 'max' | 'min' | 'number' | 'positive' | 'url' | 'date' | 'integer';

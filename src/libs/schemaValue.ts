@@ -1,21 +1,14 @@
-import stringType from './stringType';
 import { validatorArr } from '../interfaces';
 import { ValidatorType } from '../types';
-import requiredType from './requiredType';
+import schemaTypeGenerator from './schemaTypeGenerator';
 
 const schemaValue = (validators: validatorArr[], validatorType: ValidatorType) => {
   const value = [];
-  for(const {type, message} of validators) {
-    switch(type) {
-      case 'string':
-        value.push(stringType({validator: validatorType, message}));
-        break;
-      case 'required':
-        value.push(requiredType({validator: validatorType, message}));
-        break;
-      default:
-        return '';
-    }
+  for (const validator of validators) {
+    value.push(schemaTypeGenerator({
+      ...validator,
+      validator: validatorType
+    }));
   }
   return value.join(``);
 };
