@@ -8,7 +8,7 @@ const schemaContainer = (validatorConfig: Validator[], validatorType: ValidatorT
       return `
       const schema = yup.object().shape({
         ${schemaBuilder(validatorConfig, validatorType)}
-      })
+      });
     `
     default:
       return '';
