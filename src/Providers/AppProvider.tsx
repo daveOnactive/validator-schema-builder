@@ -1,43 +1,42 @@
 /** @format */
 
-// import React from 'react';
-// import { Actions } from '../types';
+import React from 'react';
+import { Actions } from '../types';
 
-// const { createContext, useReducer } = React;
+const { createContext, useReducer } = React;
 
-// export const AppContext = createContext({});
+export const AppContext = createContext({});
 
-// interface AppProviderProps {
-//   children: React.ReactNode,
-// }
+interface AppProviderProps {
+  children: React.ReactNode,
+}
 
 // type CustomDispatch =
 
-// const AppProvider = ({children}:AppProviderProps) => {
+export const AppProvider = ({ children }: AppProviderProps) => {
 
-//   // const [ state, dispatch ] = useReducer(() => null, {});
+  // const [ state, dispatch ] = useReducer(() => null, {});
 
-//   // const customDispatch = (params: { } | (dispatch: any) => {}) => {
-//   //   switch (typeof params) {
-//   //     case 'function':
-//   //       params(dispatch);
-//   //       break;
-//   //     case 'object':
-//   //       dispatch(params);
-//   //       break;
-//   //     default:
-//   //       return null;
-//   //   }
-//   // };
+  // const customDispatch = (params: any) => {
+  //   switch (typeof params) {
+  //     case 'function':
+  //       params(dispatch);
+  //       break;
+  //     case 'object':
+  //       dispatch(params);
+  //       break;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
-//   return (
-//     <AppContext.Provider value={{
-//       state,
-//       dispatch: customDispatch
-//     }}>
-//       { children }
-//     </AppContext.Provider>
-//   );
-// };
+  return (
+    <AppContext.Provider value={{
+      value: 'hello world'
+    }}>
+      { children}
+    </AppContext.Provider>
+  );
+};
 
-// export default AppProvider;
+export default AppProvider;

@@ -2,7 +2,7 @@
 
 import { useDrag } from 'react-dnd';
 import { SchemaValidators } from '../../types';
-import Card from '../Card';
+import { CardWithBtn } from '..';
 
 interface ValidatorMethodProps {
 	method: string;
@@ -24,15 +24,15 @@ export const ValidatorMethod = ({ method }: ValidatorMethodProps) => {
 	return (
 		<section
 			ref={drag}
-			style={{
-				width: '100px',
-				height: '100px',
-				color: '#fff',
-				background: 'red',
-				textAlign: 'center'
-			}}
+		// style={{
+		// 	width: '100px',
+		// 	height: '100px',
+		// 	color: '#fff',
+		// 	background: 'red',
+		// 	textAlign: 'center'
+		// }}
 		>
-			<Card>{method}</Card>
+			<CardWithBtn />
 		</section>
 	);
 };

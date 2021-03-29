@@ -1,6 +1,7 @@
 /** @format */
 import * as Prism from 'prismjs';
 import React from 'react';
+import { Box } from "@chakra-ui/react";
 import 'prismjs/themes/prism-tomorrow.css';
 
 interface Props {
@@ -14,9 +15,11 @@ export const DisplayCode = ({ code }: Props) => {
 		Prism.highlightAll();
 	}, []);
 	return (
-		<pre>
-			<code className="language-javascript">{code}</code>
-		</pre>
+		<Box w='550px'>
+			<pre>
+				<code className="language-javascript">{code}</code>
+			</pre>
+		</Box>
 	);
 };
 
