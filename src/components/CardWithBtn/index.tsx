@@ -1,12 +1,22 @@
-import { CloseButton, Box, Flex } from "@chakra-ui/react";
+import { CloseButton, Box, Flex, Text } from "@chakra-ui/react";
 
 export const CardWithBtn = () => {
   return (
-    <Box boxShadow="sm" rounded="md" bg="white">
+    <Box
+      boxShadow="xl"
+      rounded="md"
+      m='3'
+      borderWidth="1px"
+      borderRadius="lg"
+    >
       <Flex justify='flex-end'>
         <CloseButton />
       </Flex>
-      value
+      <Text
+        fontSize='lg'
+        textAlign='center'
+        p='3'
+      >Value</Text>
     </Box>
   );
 };

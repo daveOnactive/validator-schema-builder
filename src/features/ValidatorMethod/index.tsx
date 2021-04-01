@@ -2,7 +2,7 @@
 
 import { useDrag } from 'react-dnd';
 import { SchemaValidators } from '../../types';
-import { CardWithBtn } from '..';
+import { CardWithBtn } from '../../components';
 
 interface ValidatorMethodProps {
 	method: string;

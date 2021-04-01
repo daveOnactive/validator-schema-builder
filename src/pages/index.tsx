@@ -1,64 +1,63 @@
 /** @format */
 
-import { DisplayCode, ValidatorMethod, Card, SchemaValue, ValidatorContainer } from '../components';
+import { Card, Wrapper, CardWithBtn, TextField } from '../components';
 import schemaContainer from '../libs/schemaContainer';
 import { validator } from '../data/validator';
-import { Grid, GridItem, Divider } from "@chakra-ui/react";
+import { Box, Flex, VStack, Button, Text } from "@chakra-ui/react";
+import { DisplayCode, SchemaBuilder, SchemaValues } from '../features';
 
 const MainPage = () => {
 	return (
-		<main>
-			<Grid
-				h="100%"
-				templateColumns="repeat(3, 1fr)"
-				// templateColumns="repeat(5, 1fr)"
-				gap={4}
-				w='100%'
-				p='4'
-			>
-				<GridItem bg="gray.50">
-					<Card>
-						<Grid
-							templateColumns="repeat(3, 1fr)"
-							// templateColumns="repeat(5, 1fr)"
-							gap={4}
-							w='100%'
-						// p='4'
+		<Box
+			minH='100vh'
+			w='100%'
+			p='2'
+		>
+			<Flex minH='90vh'>
+				<Wrapper
+					w='80%'
+					mx='2'
+					p='3'
+				>
+					<VStack spacing={4}
+						h='100%'
+					>
+						<Card
+							h='30%'
 						>
-							{['string', 'number', 'email'].map((method, i) => (
-								<GridItem>
-									<SchemaValue />
-								</GridItem>
-							))}
-							<Divider />
-						</Grid>
-						<ValidatorContainer />
-					</Card>
-				</GridItem>
-				<GridItem bg="gray.50">
-					<Card>
-						<Grid
-							templateColumns="repeat(3, 1fr)"
-							// templateColumns="repeat(5, 1fr)"
-							gap={4}
-							w='100%'
-						// p='4'
+							<SchemaValues />
+						</Card>
+						<TextField />
+						<Card
+							// mt='3'
+							h='100%'
 						>
-							{['string', 'number', 'email'].map((method, i) => (
-								<GridItem>
-									<ValidatorMethod method={method} key={i} />
-								</GridItem>
-							))}
-						</Grid>
-					</Card>
-				</GridItem>
-				<GridItem bg="gray.50">
-					<Card>
-						<DisplayCode code={schemaContainer(validator, 'yup')} />
-					</Card>
-				</GridItem>
-			</Grid>
-		</main>
+							<SchemaBuilder />
+						</Card>
+					</VStack>
+
+				</Wrapper>
+				<Wrapper
+					w='50%'
+					mx='2'
+				>
+					<Text textAlign='center' fontSize='xl' p='3'>Validation Methods</Text>
+
+					{
+						[1, 2, 3, 5, 6, 7].map((item: number) => (
+							<CardWithBtn />
+						))
+					}
+				</Wrapper>
+				<Wrapper
+					w='50%'
+					mx='2'
+					p='3'
+				>
+					<DisplayCode code={schemaContainer(validator, 'yup')} />
+				</Wrapper>
+			</Flex>
+		</Box>
 	);
 };
 
