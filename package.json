@@ -15,6 +15,7 @@
     "@types/react-dnd": "^3.0.2",
     "@types/react-dom": "^17.0.0",
     "framer-motion": "^4",
+    "pretty-error": "^3.0.3",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-dnd": "^14.0.1",

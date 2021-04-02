@@ -1,4 +1,6 @@
 export * from './ValidatorType';
 export * from './ValidationTypeParams';
 export * from './SchemaValidators';
-export * from './Actions';
+export * from './Action';
+export * from './Reducer';
+export * from './Dispatch';

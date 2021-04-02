@@ -1,7 +1,6 @@
 /** @format */
 
 import { Card, Wrapper, CardWithBtn, TextField } from '../components';
-import schemaContainer from '../libs/schemaContainer';
 import { validator } from '../data/validator';
 import { Box, Flex, VStack, Button, Text } from "@chakra-ui/react";
 import { DisplayCode, SchemaBuilder, SchemaValues } from '../features';
@@ -42,7 +41,6 @@ const MainPage = () => {
 					mx='2'
 				>
 					<Text textAlign='center' fontSize='xl' p='3'>Validation Methods</Text>
-
 					{
 						[1, 2, 3, 5, 6, 7].map((item: number) => (
 							<CardWithBtn />
@@ -54,7 +52,7 @@ const MainPage = () => {
 					mx='2'
 					p='3'
 				>
-					<DisplayCode code={schemaContainer(validator, 'yup')} />
+					<DisplayCode />
 				</Wrapper>
 			</Flex>
 		</Box>

@@ -1,7 +1,11 @@
 /** @format */
 
 import React from 'react';
-import { Actions } from '../types';
+import { Dispatch } from '../types';
+import { AppState } from '../interfaces';
+import methods from '../data/methods';
+import { validator } from '../data/validator';
+import appReducer from '../reducer/appReducer';
 
 const { createContext, useReducer } = React;
 
@@ -13,26 +17,31 @@ interface AppProviderProps {
 
 // type CustomDispatch =
 
+const initialState: AppState = {
+  schemaValues: validator,
+  schemaValue: {},
+  validatorMethods: methods,
+  open: false,
+  validatorMethod: null,
+}
+
 export const AppProvider = ({ children }: AppProviderProps) => {
 
-  // const [ state, dispatch ] = useReducer(() => null, {});
+  const [state, dispatch] = useReducer(appReducer, initialState);
 
-  // const customDispatch = (params: any) => {
-  //   switch (typeof params) {
-  //     case 'function':
-  //       params(dispatch);
-  //       break;
-  //     case 'object':
-  //       dispatch(params);
-  //       break;
-  //     default:
-  //       return null;
-  //   }
-  // };
+  const customDispatch: Dispatch = (params) => {
+    if (typeof params === 'object') {
+      dispatch(params);
+    }
+    if (typeof params === 'function') {
+      params(dispatch);
+    }
+  };
 
   return (
     <AppContext.Provider value={{
-      value: 'hello world'
+      state,
+      dispatch: customDispatch,
     }}>
       { children}
     </AppContext.Provider>
