@@ -1,6 +1,6 @@
 import { AppState } from '../interfaces';
 import { Reducer, Action } from '../types';
-import { OPEN_DIALOG, CLOSE_DIALOG } from '../actions';
+import { OPEN_DIALOG, CLOSE_DIALOG, ADD_SCHEMA_VALUE } from '../actions';
 
 const appReducer: Reducer<AppState, Action> = (state, actions) => {
   switch (actions.type) {
@@ -15,6 +15,14 @@ const appReducer: Reducer<AppState, Action> = (state, actions) => {
         ...state,
         open: false,
         validatorMethod: null
+      }
+    case ADD_SCHEMA_VALUE:
+      return {
+        ...state,
+        schemaValue: {
+          validator: state.schemaValue.validator,
+          name: actions.payload,
+        }
       }
     default:
       return state

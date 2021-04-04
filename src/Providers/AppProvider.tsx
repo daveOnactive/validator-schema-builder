@@ -16,7 +16,10 @@ type Context = {
 
 const initialState: AppState = {
   schemaValues: validator,
-  schemaValue: {},
+  schemaValue: {
+    name: '',
+    validator: [],
+  },
   validatorMethods: methods,
   open: false,
   validatorMethod: null,

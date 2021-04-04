@@ -13,13 +13,17 @@ type Item = {
 const { useContext } = React;
 
 export const SchemaBuilder = () => {
-  const { dispatch } = useContext(AppContext);
+  const { dispatch, state } = useContext(AppContext);
   const [item, drop] = useDrop({
     accept: 'validatorMethod',
     collect: (monitor: any) => ({
       handlerId: monitor.getHandlerId(),
     }),
     drop: (item: Item) => {
+      if (state.schemaValue.name === '') {
+        alert('Please enter schema value name before you can drop validator methods.');
+        return;
+      }
       dispatch(handleOpenDialog(item.type))
     }
   });
