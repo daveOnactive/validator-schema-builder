@@ -1,5 +1,6 @@
-import React from 'react';
 
 export default interface CardWithBtnProps {
-  children: React.ReactNode
+  title: string,
+  onClose: () => null | undefined,
+  [props: string]: unknown
 }

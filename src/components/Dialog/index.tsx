@@ -22,7 +22,7 @@ export const Dialog = ({
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{title}</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton onClick={onClose} />
           <ModalBody>
             {children}
           </ModalBody>

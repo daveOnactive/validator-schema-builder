@@ -5,3 +5,4 @@ export * from './ValidatorContainer';
 export * from './EditableField';
 export * from './Wrapper';
 export * from './TextField';
+export * from './Dialog';

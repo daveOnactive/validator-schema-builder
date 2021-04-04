@@ -9,13 +9,10 @@ import appReducer from '../reducer/appReducer';
 
 const { createContext, useReducer } = React;
 
-export const AppContext = createContext({});
-
-interface AppProviderProps {
-  children: React.ReactNode,
+type Context = {
+  dispatch?: any,
+  state: AppState
 }
-
-// type CustomDispatch =
 
 const initialState: AppState = {
   schemaValues: validator,
@@ -23,6 +20,14 @@ const initialState: AppState = {
   validatorMethods: methods,
   open: false,
   validatorMethod: null,
+}
+
+export const AppContext = createContext<Context>({
+  state: initialState
+});
+
+interface AppProviderProps {
+  children: React.ReactNode,
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {

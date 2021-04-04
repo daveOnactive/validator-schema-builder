@@ -5,12 +5,12 @@ import { SchemaValidators } from '../../types';
 import { CardWithBtn } from '../../components';
 
 interface ValidatorMethodProps {
-	method: string;
+	method: SchemaValidators;
 }
 
 export const ValidatorMethod = ({ method }: ValidatorMethodProps) => {
 	const [{ isDragging }, drag] = useDrag({
-		type: 'validatorMethod',
+		type: `validatorMethod`,
 		item: {
 			type: method,
 			message: null,
@@ -24,15 +24,14 @@ export const ValidatorMethod = ({ method }: ValidatorMethodProps) => {
 	return (
 		<section
 			ref={drag}
-		// style={{
-		// 	width: '100px',
-		// 	height: '100px',
-		// 	color: '#fff',
-		// 	background: 'red',
-		// 	textAlign: 'center'
-		// }}
+			style={{
+				cursor: isDragging ? 'pointer' : 'copy'
+			}}
 		>
-			<CardWithBtn />
+			<CardWithBtn
+				title={method}
+				onClose={() => null}
+			/>
 		</section>
 	);
 };

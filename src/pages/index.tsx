@@ -1,9 +1,10 @@
 /** @format */
 
 import { Card, Wrapper, CardWithBtn, TextField } from '../components';
-import { validator } from '../data/validator';
+import methods from '../data/methods';
 import { Box, Flex, VStack, Button, Text } from "@chakra-ui/react";
-import { DisplayCode, SchemaBuilder, SchemaValues } from '../features';
+import { DisplayCode, SchemaBuilder, SchemaValues, ValidatorMethod, AddValidatorMethod } from '../features';
+import { SchemaValidators } from '../types';
 
 const MainPage = () => {
 	return (
@@ -42,8 +43,11 @@ const MainPage = () => {
 				>
 					<Text textAlign='center' fontSize='xl' p='3'>Validation Methods</Text>
 					{
-						[1, 2, 3, 5, 6, 7].map((item: number) => (
-							<CardWithBtn />
+						methods.map((method: SchemaValidators, index: number) => (
+							<ValidatorMethod
+								method={method}
+								key={index}
+							/>
 						))
 					}
 				</Wrapper>
@@ -55,6 +59,7 @@ const MainPage = () => {
 					<DisplayCode />
 				</Wrapper>
 			</Flex>
+			<AddValidatorMethod />
 		</Box>
 	);
 };
