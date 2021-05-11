@@ -1,57 +1,62 @@
 /** @format */
 
-import React from 'react';
-import { Dispatch } from '../types';
-import { AppState } from '../interfaces';
-import methods from '../data/methods';
-import { validator } from '../data/validator';
-import appReducer from '../reducer/appReducer';
+import React from "react";
+import { Dispatch } from "../types";
+import { AppState } from "../interfaces";
+import methods from "../data/methods";
+import { validator } from "../data/validator";
+import appReducer from "../reducer/appReducer";
 
 const { createContext, useReducer } = React;
 
 type Context = {
-  dispatch?: any,
-  state: AppState
-}
+  dispatch?: any;
+  state: AppState;
+};
 
 const initialState: AppState = {
   schemaValues: validator,
   schemaValue: {
-    name: '',
+    name: "",
     validator: [],
   },
   validatorMethods: methods,
   open: false,
   validatorMethod: null,
-}
+};
 
 export const AppContext = createContext<Context>({
-  state: initialState
+  state: initialState,
 });
 
 interface AppProviderProps {
-  children: React.ReactNode,
+  children: React.ReactNode;
 }
 
 export const AppProvider = ({ children }: AppProviderProps) => {
-
   const [state, dispatch] = useReducer(appReducer, initialState);
 
   const customDispatch: Dispatch = (params) => {
-    if (typeof params === 'object') {
+    if (typeof params === "object") {
       dispatch(params);
     }
-    if (typeof params === 'function') {
+    if (typeof params === "function") {
       params(dispatch);
     }
   };
 
+  React.useEffect(() => {
+    console.log(state);
+  });
+
   return (
-    <AppContext.Provider value={{
-      state,
-      dispatch: customDispatch,
-    }}>
-      { children}
+    <AppContext.Provider
+      value={{
+        state,
+        dispatch: customDispatch,
+      }}
+    >
+      {children}
     </AppContext.Provider>
   );
 };
