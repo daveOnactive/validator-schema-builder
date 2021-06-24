@@ -1,9 +1,11 @@
-import { Box, Flex, Button, VStack, Text } from "@chakra-ui/react";
+import { Box, Flex, Button, VStack, Text, Grid } from "@chakra-ui/react";
 import { useDrop } from "react-dnd";
 import React from "react";
 import { AppContext } from "../../Providers";
 import { handleOpenDialog } from "../../actions";
 import { SchemaValidators } from "../../types";
+import { validatorArr } from "../../interfaces";
+import { CardWithBtn } from "../../components";
 
 type Item = {
   type: SchemaValidators;
@@ -32,16 +34,22 @@ export const SchemaBuilder = () => {
   return (
     <VStack spacing={0} h="100%" ref={drop}>
       <Box h="100%" bg="#232934" w="100%">
-        <Box
-          textAlign="center"
-          fontSize="lg"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          h="100%"
-        >
-          <Text color="gray.500">Drop Validation Method Here</Text>
-        </Box>
+        <Grid templateColumns="repeat(5, 1fr)" gap={6}>
+          {state.schemaValue.validator.length ? (
+            state.schemaValue.validator.map((validator: validatorArr) => (
+              <CardWithBtn
+                title={validator.type}
+                onClose={() => null}
+                data={{
+                  message: validator.message,
+                  value: validator.value,
+                }}
+              />
+            ))
+          ) : (
+            <Text color="gray.500">Drop Validation Method Here</Text>
+          )}
+        </Grid>
       </Box>
       <Flex justify="flex-end" p="3" w="100%">
         <Button bg="brand.primary" size="md">
